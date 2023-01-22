@@ -47,7 +47,7 @@
             </li>
             <li><font-awesome-icon icon="fa-solid fa-at" /><a href="mailto:davidalejandrocano@gmail.com">&nbsp;
                 Contactame</a></li>
-            <li><font-awesome-icon icon="fa-brands fa-github" />&nbsp; El Repo</li>
+            <li><font-awesome-icon icon="fa-brands fa-github" /><a href="https://github.com/inchumi/chatGPT_testing_frontend" target="_blank" rel="noopener noreferrer">&nbsp; El Repo</a></li>
           </ul>
 
         </div>
