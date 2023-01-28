@@ -13,7 +13,8 @@
                 &nbsp;<font-awesome-icon v-show="isLoadingModels" icon="fa-solid fa-spinner" spin />
                 <select :disabled="!modelOptions" name="models" id="models" @change="setSelectedModel">
                   <option v-if="!modelOptions" value="none" selected disabled hidden>-- APIKEY no válido --</option>
-                  <option v-for="option in modelOptions" :key="option" :value="option">{{ option }}</option>
+                  <option v-for="option in modelOptions" :key="option" :value="option"
+                    :selected="option === 'text-davinci-003'">{{ option }}</option>
                 </select>
               </li>
             </ul>
@@ -47,7 +48,9 @@
             </li>
             <li><font-awesome-icon icon="fa-solid fa-at" /><a href="mailto:davidalejandrocano@gmail.com">&nbsp;
                 Contactame</a></li>
-            <li><font-awesome-icon icon="fa-brands fa-github" /><a href="https://github.com/inchumi/chatGPT_testing_frontend" target="_blank" rel="noopener noreferrer">&nbsp; El Repo</a></li>
+            <li><font-awesome-icon icon="fa-brands fa-github" /><a
+                href="https://github.com/inchumi/chatGPT_testing_frontend" target="_blank"
+                rel="noopener noreferrer">&nbsp; El Repo</a></li>
           </ul>
 
         </div>
@@ -187,7 +190,12 @@ const getModels = async () => {
   isLoadingModels.value = false
 }
 
-const clearConversations = () => { conversations.value = []; chatIDs.value = []; isInputTxtDisabled.value = true }
+const clearConversations = () => {
+  chatLogs.value = []
+  chatIDs.value = []
+  conversations.value = []
+  isInputTxtDisabled.value = true
+}
 const setSelectedModel = (evt) => {
   store.actions.setSelectedModel(evt.target.value)
 }
@@ -248,7 +256,7 @@ const onSubmit = async (e) => {
     if (!chatIDIsFound) {
       console.log('No se econtró el chatID');
 
-      store.actions.setPrompt(e.target.value)
+      store.actions.setPrompt(store.state.prompt + e.target.value)
       UniqIdFound.chats.push({
         chatID: chatID,
         chatLogs: [
@@ -264,7 +272,7 @@ const onSubmit = async (e) => {
           conversation.chats.forEach(async (chat, idx) => {
             if (chat.chatID === chatID) {
               const gptResponse = await store.actions.getCompletions(apiKey.value)
-              conversations.value[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: gptResponse })
+              conversations.value[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: gptResponse.replace(/Senior Dev:\s?/, '') })
             }
           })
         }
@@ -282,10 +290,10 @@ const onSubmit = async (e) => {
         if (conversation.uniqID == apiKey.value) {
           conversation.chats.forEach(async (chat, idx) => {
             if (chat.chatID === chatID) {
-              store.actions.setPrompt(e.target.value)
+              store.actions.setPrompt(store.state.prompt + e.target.value)
               conversations.value[ix].chats[idx].chatLogs.push({ author: 'me', txt: e.target.value })
               const gptResponse = await store.actions.getCompletions(apiKey.value)
-              conversations.value[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: gptResponse })
+              conversations.value[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: gptResponse.replace(/Senior Dev:\s?/, '') })
             }
           })
         }

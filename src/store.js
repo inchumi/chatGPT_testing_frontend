@@ -4,9 +4,9 @@ const state = reactive({
     allModels: undefined,
     chatHistory: undefined,
     selectedModel: 'text-davinci-003',
-    prompt: 'Say this is a test',
-    temperature: 0,
-    max_tokens: 25,
+    prompt: `La siguiente conversación es con un Senior React Js developer:\n\nYo: Con qué manejo los estados en React?\nSenior Dev: Debes usar el hook useState\nYo: Qué es el useEffect?\nSenior Dev: El useEffect es un hook de React que te permite ejecutar código cuando una propiedad de estado se actualiza. Se le conoce como un \"efecto secundario\" y se usa para realizar tareas como realizar peticiones HTTP, suscribirse a una API externa y administrar sesiones del usuario.\nYo: `,
+    temperature: 0.9,
+    max_tokens: 150,
     apiKey: ''
 })
 
@@ -38,7 +38,12 @@ const actions = {
             model: state.selectedModel,
             prompt: state.prompt,
             temperature: state.temperature,
-            max_tokens: state.max_tokens
+            max_tokens: state.max_tokens,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0.6,
+            stop: [" Yo:", " Senior Dev:"],
+            user: 'reactjsnewbie'
         }
 
         const fetchOpts = {
