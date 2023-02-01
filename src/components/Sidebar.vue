@@ -186,6 +186,9 @@ const messageForModal = {
         <br/>
         <img src="/paso5.jpg" alt="paso 5" />
     </li>
+    <li>
+        <p>Disclaimer: La prueba gratuita tiene límite en uso por token.</p>
+    </li>
 </ul>
     <br/>
     <br/>
