@@ -1,19 +1,8 @@
 <template>
-  <div class="container">
-    <MainComponent/>
-  </div>
+  <MainLayout />
 </template>
 
 <script setup>
-import MainComponent from './components/MainComponent.vue'
+import MainLayout from './components/MainLayout.vue';
 
 </script>
-
-<style scoped>
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-</style>

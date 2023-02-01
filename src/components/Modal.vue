@@ -2,7 +2,7 @@
     <div v-show="show" :class="['modal', show ? 'modal-show' : 'modal-hide']">
         <div :style="modalStyle" :class="['modal-content', show ? 'show' : 'hide']">
             <div class="modal-header">
-                <h3>{{ title }}</h3><span @click="show = false" class="close">&times;</span>
+                <h3>{{ title }}</h3><span @click="close" class="close">&times;</span>
             </div>
             <div class="modal-body" v-html="message"></div>
         </div>
@@ -10,6 +10,7 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['close'])
 const props = defineProps({
     title: {
         type: String,
@@ -21,7 +22,6 @@ const props = defineProps({
     },
     show: {
         type: Boolean,
-        default: false
     },
     modal_bg_color: {
         type: String,
@@ -33,25 +33,25 @@ const props = defineProps({
     }
 })
 
-
 const modalStyle = {
     color: `${props.modal_msg_color}`,
     'background-color': `${props.modal_bg_color}`
 }
 
+const close = () => {
+    emit('close', '')
+}
 </script>
 
 <style lang="css" scoped>
 .modal-hide {
     display: none;
-    /* opacity: 0;*/
     transition: all 1s;
     -webkit-transition: all 1s;
 }
 
 .modal-show {
     display: block;
-    /* opacity: 1;*/
     transition: all 1s;
     -webkit-transition: all 1s;
 }
@@ -72,8 +72,6 @@ const modalStyle = {
 }
 
 .modal {
-    display: block;
-    /* opacity: 0;*/
     /* Hidden by default */
     position: absolute;
     /* Stay in place */
@@ -91,6 +89,8 @@ const modalStyle = {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    transition: all 1s;
+    -webkit-transition: all 1s;
 }
 
 .modal-content {

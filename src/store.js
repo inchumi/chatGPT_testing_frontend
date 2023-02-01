@@ -1,10 +1,17 @@
 import { reactive, readonly } from 'vue'
 
 const state = reactive({
+    conversations: [],
+    currentChat: '',
+    chatIDs: [],
+    chatLogs: [],
     allModels: undefined,
     chatHistory: undefined,
+    showModal: false,
+    showSidebar: true,
     selectedModel: 'text-davinci-003',
-    prompt: `La siguiente conversación es con un Senior React Js developer:\n\nYo: Con qué manejo los estados en React?\nSenior Dev: Debes usar el hook useState\nYo: Qué es el useEffect?\nSenior Dev: El useEffect es un hook de React que te permite ejecutar código cuando una propiedad de estado se actualiza. Se le conoce como un \"efecto secundario\" y se usa para realizar tareas como realizar peticiones HTTP, suscribirse a una API externa y administrar sesiones del usuario.\nYo: `,
+    prompt: '',
+    initialInput: `La siguiente conversación es con un Senior React Js developer:\n\nYo: Con qué manejo los estados en React?\nSenior Dev: Debes usar el hook useState\nYo: Qué es el useEffect?\nSenior Dev: El useEffect es un hook de React que te permite ejecutar código cuando una propiedad de estado se actualiza. Se le conoce como un \"efecto secundario\" y se usa para realizar tareas como realizar peticiones HTTP, suscribirse a una API externa y administrar sesiones del usuario.\nYo: `,
     temperature: 0.9,
     max_tokens: 150,
     apiKey: ''
@@ -66,13 +73,19 @@ const actions = {
 
     setSelectedModel(model) { state.selectedModel = model },
     setApiKey(apiKey) { state.apiKey = apiKey },
-    setPrompt(prompt) { state.prompt = prompt },
+    setPrompt(prompt) { state.prompt = state.initialInput + prompt },
     setTemperature(temp) { state.temperature = temp },
     setMaxTokens(maxTokens) { state.max_tokens = maxTokens },
-    setAllModels(allModels) { state.allModels = allModels }
+    setAllModels(allModels) { state.allModels = allModels },
+    setConversations(conversations) { state.conversations = conversations },
+    setCurrentChat(currChat) { state.currentChat = currChat },
+    setChatIDs(chatIDs) { state.chatIDs = chatIDs },
+    setChatLogs(chatLogs) { state.chatLogs = chatLogs },
+    setShowModal(showModal) { state.showModal = showModal },
+    setShowSidebar(showSidebar) { state.showSidebar = showSidebar }
 }
 
 export default {
-    state: readonly(state),
+    state,
     actions,
 }
