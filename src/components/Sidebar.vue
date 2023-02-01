@@ -69,7 +69,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import store from "../store"; 
+import store from "../store";
 import addNewChat from "../composables/AddNewChat"
 
 const apiKey = ref('')
@@ -156,8 +156,41 @@ function getAllChatIDs() {
 }
 
 const messageForModal = {
-    title: 'Sabías que...',
+    title: '¿Cómo uso esto, para qué sirve?',
     message: `
+    <p>Este es un proyecto demo que intenta, por un lado probar uno de los modelos conversacionales pre entrenados ofrecidos por la empresa OPENAI de forma gratuita con el objetivo de complementar la asistencia que debe recibir un desarrollador React despejando todas sus dudas sin recurrir a buscadores y foros u gastar horas viendo videos en Youtube!</p>
+    <br/>
+    <br/>
+<h3>Paso 1</h3>
+<ul>
+    <li>
+        <h3>- Dar de alta tu cuenta en OPENAI: </h3>
+        <p>Tenés que dirigirte a este <a href="https://beta.openai.com/signup" target="_blank"><strong>link</strong></a> (OPENAI.com) y crearte una cuenta.</p>
+        <br/>
+        <img src="/paso1.jpg" alt="paso 1" />
+    </li> 
+    <br/>
+    <li>
+        <h3>- Generar tu APIKEY: </h3>
+        <br/>
+        <img src="/paso2.jpg" alt="paso 2" />
+        <br/>
+        <img src="/paso3.jpg" alt="paso 3" />
+    </li>
+    <br/>
+<h3>Paso 2</h3>
+    <li>
+        <h3>- Colocá tu APIKEY e ingresá la pregunta que quieras que te conteste la IA: </h3>
+        <br/>
+        <img src="/paso4.jpg" alt="paso 4" />
+        <br/>
+        <img src="/paso5.jpg" alt="paso 5" />
+    </li>
+</ul>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 <h3>Además de los modelos GPT y los motores, OpenAI también ofrece varios otros modelos que están optimizados para tareas específicas o industrias.</h3>
 <ul>
   <li>
@@ -183,7 +216,7 @@ const messageForModal = {
 </ul>
 <br/>
 <br/>
-<p>Para más información click <a href="https://beta.openai.com/docs/models/overview" target="_blank"><strong>aquí</strong></a>. Texto generado por chatGPT. </p>`}
+<p>Para más información click <a href="https://beta.openai.com/docs/models/overview" target="_blank"><strong>aquí</strong></a>. &nbsp; (Texto generado por chatGPT). </p>`}
 </script>
 
 <style lang="css" scoped>

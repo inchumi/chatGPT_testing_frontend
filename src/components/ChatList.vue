@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import gptAvatar from '../assets/chatgpt-logo.jpeg'
+import gptAvatar from '../assets/react100xengineer.png'
 import userAvatar from '../assets/user_image.jpg'
 import store from "../store"
 

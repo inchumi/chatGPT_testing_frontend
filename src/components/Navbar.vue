@@ -1,7 +1,8 @@
 <template>
     <nav class="navbar">
-        <div>
-            <h3>React tutor</h3>
+        <div class="navbar__logo-title_container">
+            <img src="/react100xengineer.png" alt="logo" />
+            <h3>React 100x Mentor</h3>
         </div>
         <div>
             <a @click="showSidebar"><font-awesome-icon icon="fa-2xl fa-bars" /></a>
@@ -27,6 +28,18 @@ const showSidebar = () => { store.actions.setShowSidebar(!store.state.showSideba
     background-color: #34313a;
     color: white;
 }
+
+.navbar__logo-title_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+}
+
+.navbar__logo-title_container img {
+    width: 12%;
+}
+
 button:hover {
     background-color: #34313a;
     cursor: pointer;
