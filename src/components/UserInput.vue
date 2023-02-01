@@ -82,12 +82,14 @@ const onSubmit = async (e) => {
                                 store.state.conversations[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: cleanResponse })
                                 isLoading.value = false
                                 isInputDisabled.value = false
+                                txtarea.value.focus()
                             }
 
                             // setTimeout(() => {
                             //     store.state.conversations[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: 'Lorem itsumkjhask hjksdhjdhfkjshd hjshkjhksjdfhkjh skjdhksjdhf ksjdhkjsdhkfj ksjdhfk sdjfhkjksjdfh ksjhdf ksjdhksjdh fksjdhkfsjdhf ksjdfh ksdjfhskdjfhsk djfhksjdf h' })
                             //     isLoading.value = false
                             //     isInputDisabled.value = false
+                            //     txtarea.value.focus()
                             // }, 1000);
 
                         }
@@ -125,6 +127,7 @@ const onSubmit = async (e) => {
                             //     store.state.conversations[ix].chats[idx].chatLogs.push({ author: 'chatgpt', txt: '?\nClaro, aquí tienes el código:\n\n// usando setInterval\nuseEffect(() => {\n  const interval = setInterval(() => {\n    //Haz algo aquí\n  }, 1000);\n  return () => clearInterval(interval);\n}, []);\n\n// usando setTimeout\nuseEffect(() => {\n  const timeout = setTimeout(() => {\n    //Haz algo aquí\n  }, 1000);\n  return () => clearTimeout(timeout);\n}, []);' })
                             //     isLoading.value = false
                             //     isInputDisabled.value = false
+                            //     txtarea.value.focus()
                             // }, 1000);
 
                         }

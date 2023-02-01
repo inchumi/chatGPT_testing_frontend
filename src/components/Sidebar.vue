@@ -9,7 +9,7 @@
                         <li>
                             <label for="models"><small>MODELOS DISPONIBLES</small></label>
                             &nbsp;<font-awesome-icon v-show="isLoadingModels" icon="fa-solid fa-spinner" spin />
-                            <select :disabled="!modelOptions" name="models" id="models" @change="setSelectedModel">
+                            <select :disabled="true" name="models" id="models" @change="setSelectedModel">
                                 <option v-if="!modelOptions" value="none" selected disabled hidden>-- APIKEY no válido
                                     --</option>
                                 <option v-for="option in modelOptions" :key="option" :value="option"

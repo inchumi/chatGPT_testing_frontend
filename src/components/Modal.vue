@@ -89,8 +89,6 @@ const close = () => {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    transition: all 1s;
-    -webkit-transition: all 1s;
 }
 
 .modal-content {
@@ -98,7 +96,7 @@ const close = () => {
     padding: 25px;
     border: 0;
     border-radius: 10px;
-    width: 70vw;
+    width: 80vw;
 }
 
 .close {
